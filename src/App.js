@@ -27,13 +27,13 @@ class App extends Component {
     if (loading){
       return <Loading />
     }
-    const noEmails = (<p>No emails found</p>)
+    
 
     return (
       <div className="App">
         <Header />
-        <AppRoutes/>
-        {emails.length === 0 ? noEmails : <Emails emails={emails}/>}
+        <AppRoutes emails={emails}/>
+        
       </div>
     )
   }

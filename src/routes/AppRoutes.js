@@ -6,11 +6,12 @@ import Inbox from '../pages/Inbox/Inbox';
 import Sent from '../pages/Sent/Sent';
 import Favourites from '../pages/Favourites/Favourites';
 import Error from '../pages/Error/Error';
+import './appRoutes.scss'
 
 export default class AppRoutes extends Component {
   render() {
     return (
-      <>
+      <div className='page-wrapper'>
         <Route path='/' component={Sidebar} />
         <Switch>
           <Route exact path='/login' component={Login}/>
@@ -21,7 +22,7 @@ export default class AppRoutes extends Component {
                                                     type={404}
                                                     {...props}/>  }/>
         </Switch>
-      </>
+      </div>
     )
   }
 }

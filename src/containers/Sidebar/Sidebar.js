@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
 import {NavLink} from 'react-router-dom'
-
+import './sidebar.scss'
 export default class Sidebar extends Component{
   render(){
     return (
-      <div>
+      <div className='sidebar'>
         <div>
-          <NavLink exact to="/inbox" activeClassName='active-link'>Inbox</NavLink>
+          <NavLink exact to="/inbox"
+                  className='sidebar__link'
+                  activeClassName='sidebar__link--active'>Inbox</NavLink>
         </div>
         <div>
-          <NavLink exact to="/sent" activeClassName='active-link'>Sent</NavLink>
+          <NavLink exact to="/sent"
+                  className='sidebar__link'
+                  activeClassName='sidebar__link--active'>Sent</NavLink>
         </div>
         <div>
-          <NavLink exact to="/favourites" activeClassName='active-link'>Favourites</NavLink>
+          <NavLink exact to="/favourites"
+                  className='sidebar__link'
+                  activeClassName='sidebar__link--active'>Favourites</NavLink>
         </div>
 
       </div>

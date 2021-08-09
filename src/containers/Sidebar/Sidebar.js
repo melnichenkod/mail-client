@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
+import {NavLink} from 'react-router-dom'
 
 export default class Sidebar extends Component{
   render(){
     return (
       <div>
         <div>
-          <a href="/inbox">Inbox</a>
+          <NavLink exact to="/inbox" activeClassName='active-link'>Inbox</NavLink>
         </div>
         <div>
-          <a href="/sent">Sent</a>
+          <NavLink exact to="/sent" activeClassName='active-link'>Sent</NavLink>
         </div>
         <div>
-          <a href="/favourites">Favourites</a>
+          <NavLink exact to="/favourites" activeClassName='active-link'>Favourites</NavLink>
         </div>
 
       </div>

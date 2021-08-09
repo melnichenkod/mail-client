@@ -3,7 +3,7 @@ import axios from 'axios'
 import Loading from './components/Loading/Loading'
 import Header from './containers/Header/Header'
 import Emails from './containers/Emails/Emails'
-
+import AppRoutes from './routes/AppRoutes'
 class App extends Component {
   state = {
     emails: [],
@@ -32,6 +32,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <AppRoutes/>
         {emails.length === 0 ? noEmails : <Emails emails={emails}/>}
       </div>
     )

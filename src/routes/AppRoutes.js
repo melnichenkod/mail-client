@@ -18,7 +18,7 @@ class AppRoutes extends Component {
         {/* <Route path='/' component={Sidebar} /> */}
         <Switch>
           <Route exact path='/login' component={Login}/>
-          <Route exact path='/inbox'
+          <Route exact path='/'
             render={props=>(
               <Inbox emails={emails} {...props}/>
             )}/>

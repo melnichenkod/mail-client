@@ -6,7 +6,7 @@ export default class Sidebar extends Component{
     return (
       <div className='sidebar'>
         <div>
-          <NavLink exact to="/inbox"
+          <NavLink exact to="/"
                   className='sidebar__link'
                   activeClassName='sidebar__link--active'>Inbox</NavLink>
         </div>
@@ -19,6 +19,11 @@ export default class Sidebar extends Component{
           <NavLink exact to="/favourites"
                   className='sidebar__link'
                   activeClassName='sidebar__link--active'>Favourites</NavLink>
+        </div>
+        <div>
+          <NavLink exact to="/unknown-route"
+                  className='sidebar__link'
+                  activeClassName='sidebar__link--active'>Unknown route</NavLink>
         </div>
 
       </div>

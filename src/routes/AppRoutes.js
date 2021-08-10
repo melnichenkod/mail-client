@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Sidebar from '../containers/Sidebar/Sidebar';
 import Login from '../pages/Login/Login';
 import Inbox from '../pages/Inbox/Inbox';
@@ -8,12 +8,14 @@ import Favourites from '../pages/Favourites/Favourites';
 import Error from '../pages/Error/Error';
 import './appRoutes.scss'
 
-export default class AppRoutes extends Component {
+class AppRoutes extends Component {
   render() {
-    const {emails} = this.props
+    const {emails} = this.props;
+    const authenticated = true;
     return (
       <div className='page-wrapper'>
-        <Route path='/' component={Sidebar} />
+        <ProtectedRoutes authenticated={authenticated} path='/' component={Sidebar} />
+        {/* <Route path='/' component={Sidebar} /> */}
         <Switch>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/inbox'
@@ -30,5 +32,17 @@ export default class AppRoutes extends Component {
     )
   }
 }
+
+const ProtectedRoutes = ({component: Component, authenticated, ...rest}) => { //componenent: Component - renamed variable
+  return (
+    <Route {...rest} render={(props) => {
+      if (authenticated) {
+        return <Component {...props} /> //rendering variable Component, must begin with a capital letter
+      }
+      return <Redirect to='/login' />
+    }}/>
+  )
+}
+export default AppRoutes;
 
 

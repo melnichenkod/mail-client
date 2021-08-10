@@ -25,6 +25,11 @@ export default class Sidebar extends Component{
                   className='sidebar__link'
                   activeClassName='sidebar__link--active'>Unknown route</NavLink>
         </div>
+        <div>
+          <NavLink exact to="/show-error"
+                  className='sidebar__link'
+                  activeClassName='sidebar__link--active'>Show error</NavLink>
+        </div>
 
       </div>
     )

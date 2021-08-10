@@ -6,6 +6,7 @@ import Inbox from '../pages/Inbox/Inbox';
 import Sent from '../pages/Sent/Sent';
 import Favourites from '../pages/Favourites/Favourites';
 import Error from '../pages/Error/Error';
+import ErroneousPage from '../pages/ErroneousPage/ErroneousPage';
 import './appRoutes.scss'
 
 class AppRoutes extends Component {
@@ -24,6 +25,7 @@ class AppRoutes extends Component {
             )}/>
           <Route exact path='/sent' component={Sent}/>
           <Route exact path='/favourites' component={Favourites}/>
+          <Route exact path='/show-error' component={ErroneousPage}/>
           <Route path='*' render={(props) => <Error    //redefined function render           
                                                     type={404}
                                                     {...props}/>  }/>

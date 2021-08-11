@@ -12,21 +12,21 @@ import './appRoutes.scss'
 class AppRoutes extends Component {
   render() {
     const {emails} = this.props;
-    const authenticated = true;
+    const authenticated = false;
     return (
       <div className='page-wrapper'>
         <ProtectedRoutes authenticated={authenticated} path='/' component={Sidebar} />
         {/* <Route path='/' component={Sidebar} /> */}
         <Switch>
           <Route exact path='/login' component={Login}/>
-          <Route exact path='/'
+          <ProtectedRoutes authenticated={authenticated} exact path='/'
             render={props=>(
               <Inbox emails={emails} {...props}/>
             )}/>
-          <Route exact path='/sent' component={Sent}/>
-          <Route exact path='/favourites' component={Favourites}/>
-          <Route exact path='/show-error' component={ErroneousPage}/>
-          <Route path='*' render={(props) => <Error    //redefined function render           
+          <ProtectedRoutes authenticated={authenticated} exact path='/sent' component={Sent}/>
+          <ProtectedRoutes authenticated={authenticated} exact path='/favourites' component={Favourites}/>
+          <ProtectedRoutes authenticated={authenticated} exact path='/show-error' component={ErroneousPage}/>
+          <ProtectedRoutes authenticated={authenticated} path='*' render={(props) => <Error    //redefined function render           
                                                     type={404}
                                                     {...props}/>  }/>
         </Switch>

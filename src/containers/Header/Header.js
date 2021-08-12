@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 class Header extends Component{
   render(){
+    const {user} = this.props;
+    const userName = (user && user.login) || 'stranger'
     return(
       <div>
-        Application header
+        <p>Application header</p>
+        <p>Hello, {userName}</p>
       </div>
     )
   }

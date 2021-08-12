@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Loading from './components/Loading/Loading'
 import Header from './containers/Header/Header'
-import Emails from './containers/Emails/Emails'
 import AppRoutes from './routes/AppRoutes'
 class App extends Component {
   state = {
     emails: [],
     loading: true,
-    error: null
+    error: null,
+    user: null
   }
   componentDidMount(){
     axios('/emails.json')
@@ -20,20 +20,24 @@ class App extends Component {
           })
         }, 3000)
       })
-  }
+  };
+  signIn = (user) => {
+    this.setState({
+      user: user
+    });
+  };
 
   render(){
-    const {emails, loading} = this.state;
+    const {emails, loading, user} = this.state;
     if (loading){
       return <Loading />
     }
-    
+    console.log('user', user);
 
     return (
       <div className="App">
-        <Header />
-        <AppRoutes emails={emails}/>
-        
+        <Header user={user} />
+        <AppRoutes emails={emails} signIn={this.signIn} user={user}/>
       </div>
     )
   }

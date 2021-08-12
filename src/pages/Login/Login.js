@@ -10,6 +10,10 @@ export default class Login extends Component {
   signIn = () => {
     console.log('login', this.login.current.value);
     console.log('password', this.password.current.value);
+    this.props.signIn({
+      login: this.login.current.value,
+      password: this.password.current.value
+    })
   }
   render() {
     console.log('Login', this.login);

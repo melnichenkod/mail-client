@@ -11,14 +11,16 @@ import './appRoutes.scss'
 
 class AppRoutes extends Component {
   render() {
-    const {emails} = this.props;
-    const authenticated = false;
+    const {emails, signIn, user} = this.props;
+    const authenticated = user !== null;
     return (
       <div className='page-wrapper'>
         <ProtectedRoutes authenticated={authenticated} path='/' component={Sidebar} />
         {/* <Route path='/' component={Sidebar} /> */}
         <Switch>
-          <Route exact path='/login' component={Login}/>
+          <Route exact path='/login' render={(props) => {
+                                         return (<Login authenticated={authenticated} signIn={signIn}
+                                                {...props} />)} }/>
           <ProtectedRoutes authenticated={authenticated} exact path='/'
             render={props=>(
               <Inbox emails={emails} {...props}/>

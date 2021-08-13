@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import './Login.scss'
 
 export default class Login extends Component {
@@ -13,11 +14,16 @@ export default class Login extends Component {
     this.props.signIn({
       login: this.login.current.value,
       password: this.password.current.value
-    })
+    });
   }
   render() {
     console.log('Login', this.login);
     console.log('Password', this.password);
+    const {authenticated} = this.props;
+    if (authenticated){
+      return <Redirect to='/' />
+    }
+
     
     return (
       <div className='login'>

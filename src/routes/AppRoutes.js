@@ -37,11 +37,15 @@ class AppRoutes extends Component {
   }
 }
 
-const ProtectedRoutes = ({component: Component, authenticated, ...rest}) => { //componenent: Component - renamed variable
+const ProtectedRoutes = ({component: Component, authenticated, render,  ...rest}) => { //componenent: Component - renamed variable
   return (
-    <Route {...rest} render={(props) => {
+    <Route {...rest} render={(renderProps) => {
       if (authenticated) {
-        return <Component {...props} /> //rendering variable Component, must begin with a capital letter
+        if (render) {
+          return render(renderProps)
+        } else {
+        return <Component {...renderProps} /> //rendering variable Component, must begin with a capital letter
+        }
       }
       return <Redirect to='/login' />
     }}/>

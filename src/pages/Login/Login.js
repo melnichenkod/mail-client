@@ -1,48 +1,43 @@
-import React, { Component } from 'react';
+import React, {useRef} from 'react';
 import { Redirect } from 'react-router-dom';
 import './Login.scss'
 
-export default class Login extends Component {
-  constructor(props){
-    super(props);
-    this.login = React.createRef(null);
-    this.password = React.createRef(null)
-  }
-  signIn = () => {
-    console.log('login', this.login.current.value);
-    console.log('password', this.password.current.value);
-    this.props.signIn({
-      login: this.login.current.value,
-      password: this.password.current.value
-    });
-  }
-  render() {
-    console.log('Login', this.login);
-    console.log('Password', this.password);
-    const {authenticated} = this.props;
+const Login = (props) => {
+    const login = useRef(null);
+    const password = useRef(null)
+    console.log('Login', login);
+    console.log('Password', password);
+    const {authenticated, signIn} = props;
+
+    const loginUser = () => {
+      console.log('login', login.current.value);
+      console.log('password', password.current.value);
+      signIn({
+        login: login.current.value,
+        password: password.current.value
+      });
+    }
     if (authenticated){
       return <Redirect to='/' />
     }
-
     
     return (
       <div className='login'>
         <h2>Please log in</h2>
         <div className='login__form'>
           <div>
-            <input type='text' placeholder='User name' ref={this.login }/>
+            <input type='text' placeholder='User name' ref={login }/>
           </div>
           <div>
-            <input type='password' placeholder='Password' ref={this.password}/>
+            <input type='password' placeholder='Password' ref={password}/>
           </div>
           <div>
-            <button onClick={this.signIn}>
+            <button onClick={loginUser}>
               Sign in
             </button>
           </div>
         </div>
       </div>
-
     )
-  }
 }
+export default Login;

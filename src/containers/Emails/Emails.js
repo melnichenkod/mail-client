@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Email from '../../components/Email/Email';
 
-export default class Emails extends Component{
-  render(){
-    const {emails} = this.props;
+const Emails = (props) =>{
+    const {emails} = props;
     const emailCards = emails.map((email) => {
       return <Email key={email.id} email={email}/>
     })
@@ -12,5 +11,5 @@ export default class Emails extends Component{
         {emailCards}
       </>
     )
-  }
 }
+export default Emails;
